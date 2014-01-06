@@ -1,7 +1,7 @@
 DogeAPI PHP
 ===========
 
-PHP wrapper for [DogeAPI.com](https://www.dogeapi.com/). API key validation on instantiation, simple abstraction layer on top of existing API interfaces, and automatic JSON decoding on response.
+PHP wrapper for [DogeAPI.com](https://www.dogeapi.com/) for use with [Dogecoin](http://dogecoin.com/). API key validation on instantiation, simple abstraction layer on top of existing API interfaces, and automatic JSON decoding on response.
 
 Pull requests accepted and encouraged. :)
 
@@ -40,7 +40,7 @@ echo $balance;
 To make requests that require parameters (eg. an address label or address to withdraw to), pass through each parameter in an associative array. For example, the request below will withdraw 50 DOGE to the wallet you specify in place of `WALLET-ADDRESS-HERE`:
 
 ~~~
-$withdraw= $doge->withdraw(array('amount' => 50, 'payment_address' => 'WALLET-ADDRESS-HERE'));
+$withdraw = $doge->withdraw(array('amount' => 50, 'payment_address' => 'WALLET-ADDRESS-HERE'));
 ~~~
 
 **Note:** Error checking has not been fully implemented, please enforce your own checks on top of the wrapper. 
