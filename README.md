@@ -18,15 +18,24 @@ require_once 'path/to/dogeapi.php';
 Instantiate the class, passing through your unique API key. Will return `true` if the key validates. 
 
 ~~~
-$doge = new DogeAPI('YOUR-API-KEY-HERE');
+$dogeAPIKey = "INSERTAPIKEYHERE";
 
-// Test that your API key is valid
-if ($doge) {
-  echo "Yay, it's a valid API key";
-}
+$doge = new DogeAPI();
 
-else {
-  echo "That's not a valid API key";
+$validKey = $doge->set_key($dogeAPIKey);
+
+if($validKey) {
+	echo "Yay, it's a valid API key\n\n";
+	$balance = $doge->get_balance();
+	$address = $doge->get_my_addresses();
+	$difficulty = $doge->get_difficulty();
+	$current_block = $doge->get_current_block();
+	echo "Your current balance is " . $balance . "Ɖ\n";
+	echo "Your current address is " . print_r($address,true) . "\n";
+	echo "The current difficulty is " . $difficulty . "\n";
+	echo "The current block is " . $current_block . "\n";
+} else {
+  echo "The API Key (" . $doge->get_key() . ") is not a valid API key";
 }
 ~~~
 
@@ -45,7 +54,32 @@ $withdraw = $doge->withdraw(array('amount' => 50, 'payment_address' => 'WALLET-A
 
 **Note:** Error checking has not been fully implemented, please enforce your own checks on top of the wrapper. 
 
-### Other examples
+### Other Examples
+
+#### Set Current API Key
+
+Set the current API key being used. The key is also validated and the result of this validation is returned.
+
+$validKey = $doge->set_key($dogeAPIKey);
+if($validKey) {
+	echo "Yay, it's a valid API key\n\n";
+} else {
+  echo "The API Key (" . $doge->get_key() . ") is not a valid API key";
+}
+
+#### Get Current API Key
+
+Print the current API key being used
+
+echo $doge->get_key();
+
+#### Get Balance
+
+Print the current balance of your account.
+
+echo $doge->get_balance();
+
+#### Get My Addresses
 
 Print an array of wallet addresses associated with your account:
 
@@ -54,12 +88,10 @@ $addresses = $doge->get_my_addresses();
 print_r($addresses);
 ~~~
 
+#### Get the Current Block
+
 Print the current block the blockchain has reached:
 
 ~~~
 echo $doge->get_current_block();
 ~~~
-
-
-
-
