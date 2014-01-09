@@ -15,7 +15,7 @@ Download and include the dogeapi.php class:
 require_once 'path/to/dogeapi.php';
 ~~~
 
-Instantiate the class, passing through your unique API key. Will return `true` if the key validates. 
+Instantiate the class and set your API key. If the API key is valid the set function will return true otherwise false.
 
 ~~~
 $dogeAPIKey = "INSERTAPIKEYHERE";
