@@ -16,20 +16,8 @@ class DogeAPI
      * Validate the given API key on instantiation
      */
      
-    private $key;
-
-    function __construct($key)
-    {
-        // Set api_key property
-        $this->api_key = $key;
-
-        // Test if the key is valid by doing a simple balance check
-        $validate = $this->_request('GET', '&a=get_balance');
-        
-        // Return true/false if key is valid
-        return $validate ? true : false;
-    }
-
+    private $api_key;
+    private $valid_key = false;
     /**
      * cURL GET request driver
      */
@@ -58,6 +46,33 @@ class DogeAPI
 
         // Spit back the response object or fail
         return $result ? json_decode($result) : false;        
+    }
+
+    /**
+    * DogeAPI API Key Set, Get, and Validation
+    */
+    public function set_key($key)
+    {
+        $this->api_key = $key;
+        return $this->validate_key();
+    }
+
+    public function get_key($key)
+    {
+        return $this->api_key;
+    }
+
+    private function validate_key()
+    {
+        // Test if the key is valid by doing a simple balance check
+        $validate = $this->_request('GET', '&a=get_balance');
+        
+        // Return true/false if key is valid
+        if ($validate == "Invalid API Key")
+            $this->valid_key = false;
+        else
+            $this->valid_key = true;
+        return $this->valid_key;
     }
 
     /**
