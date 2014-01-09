@@ -60,24 +60,30 @@ $withdraw = $doge->withdraw(array('amount' => 50, 'payment_address' => 'WALLET-A
 
 Set the current API key being used. The key is also validated and the result of this validation is returned.
 
+~~~
 $validKey = $doge->set_key($dogeAPIKey);
 if($validKey) {
 	echo "Yay, it's a valid API key\n\n";
 } else {
   echo "The API Key (" . $doge->get_key() . ") is not a valid API key";
 }
+~~~
 
 #### Get Current API Key
 
 Print the current API key being used
 
+~~~
 echo $doge->get_key();
+~~~
 
 #### Get Balance
 
 Print the current balance of your account.
 
+~~~
 echo $doge->get_balance();
+~~~
 
 #### Get My Addresses
 
