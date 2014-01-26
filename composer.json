@@ -1,5 +1,5 @@
 {
-    "name": "dogeapi-php/dogeapi-php",
+    "name": "dogeapi/dogeapi-php",
     "license": "MIT",
     "description": "dogeapi-php API library",
     "keywords": ["dogecoin", "dogeapi"],
