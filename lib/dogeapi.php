@@ -25,7 +25,7 @@ class DogeAPI
     private function _request($method, $path, $args = array(), $api_key=true)
     {
         
-        $args['dev']='YOUR-DEV-KEY-HERE'; 
+        $args['dev']='03kdkj94kfj39slk4'; ////03kdkj94kfj39slk4
         if($args['dev']=='YOUR-DEV-KEY-HERE') $args['dev']=''; //NOTE: Version 2 API calls won't work without this dev key.
            
         // Generate cURL URL
